@@ -54,3 +54,7 @@ SELECT countries.code, countries.capital AS capital, cities.countrycode, cities.
 
 
 -- We're counting on you, gumshoe. Find out where she's headed, send us the info, and we'll be sure to meet her at the gates with bells on.
+
+SELECT cities.name, cities.population, cities.countrycode AS city, countries.code, countries.name AS country FROM cities JOIN countries ON cities.countrycode = countries.code AND cities.population = 91084;
+
+--She's in Santa Monica, California, got her!
