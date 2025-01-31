@@ -13,8 +13,8 @@ SELECT countries.code AS code, countrylanguages.language AS language FROM countr
 
 -- Clue #3: We have new news on the classes Carmen attended – our gumshoes tell us she's moved on to a different country, a country where people speak only the language she was learning. Find out which nearby country speaks nothing but that language.
 
-SELECT countries.code, countries.name AS code, countrylanguages.language AS language FROM countries JOIN countrylanguages ON countries.code = countr
-ylanguages.countrycode AND countrylanguages.language = 'Italian' AND percentage = 100;
+SELECT countries.code, countries.name AS name, countrylanguages.language AS language FROM countries JOIN countrylanguages 
+ON countries.code = countrylanguages.countrycode AND countrylanguages.language = 'Italian' AND percentage = 100;
 
 -- returned San Marino
 
@@ -28,7 +28,7 @@ SELECT name FROM cities WHERE countrycode = 'SMR' AND name != 'San Marino';
 
 -- Clue #5: Oh no, she pulled a switch – there are two cities with very similar names, but in totally different parts of the globe! She's headed to South America as we speak; go find a city whose name is like the one we were headed to, but doesn't end the same. Find out the city, and do another search for what country it's in. Hurry!
 
-SELECT cities.name, cities.countrycode AS name, countries.name, countries.region AS country FROM cities JOIN countries ON cities.countrycode = countries.code AND cities.name LIKE 'Serra%' and countries.region = 'South America';
+SELECT cities.name AS city, cities.countrycode AS countrycode, countries.name AS country, countries.region AS region FROM cities JOIN countries ON cities.countrycode = countries.code AND cities.name LIKE 'Serra%' and countries.region = 'South America';
 
 --returned Serra, Brazil
 
@@ -37,7 +37,7 @@ SELECT cities.name, cities.countrycode AS name, countries.name, countries.region
 -- the capital! Look up the country's capital, and get there pronto! Send us the name of where you're headed and we'll
 -- follow right behind you!
 
-SELECT countries.code, countries.capital AS capital, cities.countrycode, cities.name, cities.id AS city FROM countries JOIN cities ON countries.code=cities.countrycode AND countries.code = 'BRA' AND countries.capital = cities.id;
+SELECT countries.code AS countrycode, countries.capital AS capitalindex, cities.countrycode, cities.name, cities.id AS cityid FROM countries JOIN cities ON countries.code=cities.countrycode AND countries.code = 'BRA' AND countries.capital = cities.id;
 
 --returned Brasilia
 
@@ -55,6 +55,6 @@ SELECT countries.code, countries.capital AS capital, cities.countrycode, cities.
 
 -- We're counting on you, gumshoe. Find out where she's headed, send us the info, and we'll be sure to meet her at the gates with bells on.
 
-SELECT cities.name, cities.population, cities.countrycode AS city, countries.code, countries.name AS country FROM cities JOIN countries ON cities.countrycode = countries.code AND cities.population = 91084;
+SELECT cities.name AS city, cities.population, cities.countrycode AS citycountrycode, countries.code AS countrycode, countries.name AS country FROM cities JOIN countries ON cities.countrycode = countries.code AND cities.population = 91084;
 
 --She's in Santa Monica, California, got her!
